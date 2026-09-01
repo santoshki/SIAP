@@ -1,5 +1,5 @@
 module "servicenow_users" {
-  source = "./modules/servicenow_user"
+  source = "./modules/user"
 
   for_each = var.servicenow_users
 

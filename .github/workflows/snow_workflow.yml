@@ -81,7 +81,7 @@ jobs:
 
 
   review:
-    name: Terraform Review
+    name: Review Plan
     needs: plan
     runs-on: ubuntu-latest
 
