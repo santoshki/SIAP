@@ -10,6 +10,8 @@ terraform {
       version = "~> 1.25"
     }
   }
+
+  backend "pg" {}
 }
 
 provider "servicenow" {
@@ -17,4 +19,3 @@ provider "servicenow" {
   username     = var.servicenow_username
   password     = var.servicenow_password
 }
-
