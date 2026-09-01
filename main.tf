@@ -8,6 +8,15 @@ resource "servicenow_user" "example" {
   active     = true
 }
 
+resource "servicenow_user" "example2" {
+  user_name  = "jane2.doe2"
+  first_name = "Janetwo"
+  last_name  = "Doetwo"
+  email      = "janetwo.doe@example.com"
+  title      = "Software Engineer"
+  active     = true
+}
+
 # data "servicenow_user" "test" {
 #   user_name = "devopsuser"
 # }
