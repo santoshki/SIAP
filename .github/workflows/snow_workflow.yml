@@ -94,7 +94,6 @@ jobs:
           echo "Terraform plan has been generated."
           echo "Review the Terraform plan artifact before approving Apply."
 
-
   apply:
     name: Terraform Apply
     needs: review
@@ -128,40 +127,17 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
 
-  upload_artifacts:
-    name: Upload Pipeline Artifacts
-    needs: apply
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download Terraform Plan Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: terraform-plan
-          path: artifacts/terraform-plan
-
-      - name: Download Terraform Apply Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: terraform-apply
-          path: artifacts/terraform-apply
-
-      - name: List Pipeline Artifacts
-        run: |
-          echo "Pipeline artifacts:"
-          find artifacts -type f -print
-
-      - name: Upload Final Pipeline Artifacts
+      - name: Upload Terraform Apply Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: siap-pipeline-artifacts
-          path: artifacts/
+          name: terraform-apply
+          path: |
+            terraform-output.txt
           retention-days: 30
-
 
   finalize:
     name: Finalize
-    needs: upload_artifacts
+    needs: apply
     runs-on: ubuntu-latest
 
     steps:
