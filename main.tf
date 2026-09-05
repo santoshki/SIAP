@@ -12,5 +12,5 @@
 # }
 module "table" {
   source = "./modules/table"
-  table_label = "Security Finding"
+  table_label = "Security Findings"
 }
