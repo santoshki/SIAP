@@ -161,7 +161,7 @@ jobs:
 
   finalize:
     name: Finalize
-    needs: apply
+    needs: upload_artifacts
     runs-on: ubuntu-latest
 
     steps:
